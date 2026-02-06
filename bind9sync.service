@@ -1,0 +1,19 @@
+[Unit]
+Description=Proxmox -> BIND9 DNS sync
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+EnvironmentFile=/etc/bind9sync.env
+ExecStart=/usr/local/sbin/bind9sync.sh
+User=root
+Group=root
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/run /tmp
+
+[Install]
+WantedBy=multi-user.target

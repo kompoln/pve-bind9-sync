@@ -1,0 +1,11 @@
+[Unit]
+Description=Run bind9sync every minute
+
+[Timer]
+OnCalendar=*:0/1
+Persistent=true
+Unit=bind9sync.service
+AccuracySec=1s
+
+[Install]
+WantedBy=timers.target
